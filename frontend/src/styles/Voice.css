@@ -1,0 +1,6 @@
+.voiceChat-container {
+    grid-area: 12 / 10 / 12 / 10;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}

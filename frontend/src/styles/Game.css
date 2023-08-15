@@ -1,0 +1,12 @@
+.game-container {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-gap: 5px;
+    padding: 5px;
+    height: 100vh;
+    grid-auto-rows: minmax(100px, auto);
+
+    background: url(../assets/pexels-fwstudio-172277.jpg) rgba(255,255, 255, 0.2);
+    background-size: cover;
+    background-blend-mode: overlay;
+}

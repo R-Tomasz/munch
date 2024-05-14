@@ -78,7 +78,7 @@ const initialData = {
             },
             'stack-discarded-treasures': {
                 id: 'stack-discarded-treasures',
-                itemIds: ['64bfe5af806f4c590c412197', '64bead039921e1300b81d9db'],
+                itemIds: [],
                 stack: true,
                 hidden: false
             },
@@ -86,11 +86,10 @@ const initialData = {
                 id: 'playing-area',
                 itemIds: [],
                 stack: false,
-                hidden: true
+                hidden: false
             }
         }
     }
 }
-// itemIds: ['64bead039921e1300b81d9db', '64bfe5af806f4c590c412197'],
 
 export default initialData;

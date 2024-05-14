@@ -43,13 +43,6 @@
     flex-direction: row;
 }
 
-.column-2-hidden,
-.column-2-revealed,
-.column-4-hidden,
-.column-4-revealed {
-    /*min-height: 80px;*/
-}
-
 .column-2-hidden > div,
 .column-2-revealed > div,
 .column-4-hidden > div,

@@ -34,19 +34,13 @@ public class User {
     @NonNull
     private String password;
 
-    @Indexed(unique = false)
+    @Indexed
     @Field
     @NonNull
     private String nick;
 
     @Field
     private List<Role> roles;
-
-    public User(String username, String password, String nick) {
-        this.username = username;
-        this.password = password;
-        this.nick = nick;
-    }
 
     public User(String username, String email, String password, String nick, List<Role> roles) {
         this.username = username;

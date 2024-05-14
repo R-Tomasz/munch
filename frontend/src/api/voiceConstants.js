@@ -1,4 +1,3 @@
-// export const TEMP_TOKEN = '/5J98jepf/W0cfrn5c0rPWyw+j+te6Z3I8wIKDIZGRiZGpmmG5mkmFiaGppaWRimmJilGKcbJRsapKUkp85NupTQEMjIo+ocxMEIhiM/BkJuYl1yVnZnHwAAAR9kfJg=='
-export const TEMP_TOKEN = '007eJxTYAhT/Bm74xj/5J98jepf/W0cfrn5c0rPWyw+j+te6Z3I8wIKDIZGRiZGpmmG5mkmFiaGppaWRimmJilGKcbJRsapKUkp85NupTQEMjIo+ocxMEIhiM/BkJuYl1yVnZnHwAAAR9kfJg=='
+export const TEMP_TOKEN = '007eJxTYIgRnCV/pqa4atpF/ZDEzMcWYS5f3fiF3x+sSPr1uGjeSVUFBkMjIxMj0zRD8zQTCxNDU0tLoxRTkxSjFONkI+PUlKSU8O7bKQ2BjAwGTLOYGRkgEMTnYMhNzEuuys7MY2AAAIszICE='
 export const APP_ID = '122425f17f48415992d54d2d3c23edbd'
 export const CHANNEL_NAME = 'manczkin'

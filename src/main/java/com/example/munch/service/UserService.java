@@ -13,18 +13,6 @@ public class UserService {
 
     private final UserRepository userRepository;
 
-    public User addUser(User user) {
-        return userRepository.insert(user);
-    }
-
-    public List<User> getAllUsers() {
-        return userRepository.findAll();
-    }
-
-    public User getCurrentUser() {
-        return null;
-    }
-
     public User getUserByUsername(String username) {
         return userRepository.findByUsername(username).orElse(null);
     }

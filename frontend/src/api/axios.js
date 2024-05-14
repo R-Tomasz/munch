@@ -41,7 +41,7 @@ axios.interceptors.response.use(async function (response) {
         }
     }
     if (error.response.status === 404 || error.response.status === 400) {
-        window.location = '/404';
+        window.location = '/';
     }
     if (error.response.status === 403) {
         window.location = '/login';

@@ -16,12 +16,11 @@ public class Game {
 
     @Id
     private String id;
-    @Indexed
-    private User host;
-    @Indexed
-    private List<User> players = new ArrayList<>();
+    private String hostUsername;
+    private List<String> players = new ArrayList<>();
     private List<Card> initialCards = new ArrayList<>();
     private Map<String, String> playerAreas = new LinkedHashMap<>();
+    @Indexed
     private String gameUuid;
     private GameStatus gameStatus;
 

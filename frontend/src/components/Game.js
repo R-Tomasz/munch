@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import axios from "axios";
-import {useLocation, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {GET_GAME, WEBSOCKET, WEBSOCKET_GAME_SUBSCRIBE, WEBSOCKET_SEND_JOIN, WEBSOCKET_SEND_MOVE} from "../api/urls";
 import SockJS from 'sockjs-client';
@@ -9,7 +9,7 @@ import PlayerArea from "./PlayerArea";
 import TableArea from "./TableArea";
 import "../styles/Game.css"
 import initialData from "../data/initialData";
-import VoiceChat from "./Voice";
+import VoiceChat from "./VoiceChat";
 
 let Stomp = require('stompjs');
 
@@ -24,9 +24,7 @@ const Game = () => {
     const [cardObjects, setCardObjects] = useState([])
 
     const params = useParams();
-
     const userState = useSelector(state => state.auth);
-
     const previousStateRef = useRef({});
 
     useEffect(() => {
@@ -49,9 +47,21 @@ const Game = () => {
         }
     }
 
+    useEffect(() => {
+        let initialDoors = []
+        let initialTreasures = []
+        cardObjects.map(card => {
+            card.type === 'TREASURE'
+                ? initialTreasures.push(card.id)
+                : initialDoors.push(card.id)
+        })
+        state.columns.stolik.areas['stack-treasures'].itemIds = initialTreasures
+        state.columns.stolik.areas['stack-doors'].itemIds = initialDoors
+    }, [cardObjects])
+
     const connectStomp = () => {
-        let sock = new SockJS(WEBSOCKET)
-        stompClient = Stomp.over(sock);
+        let sockJs = new SockJS(WEBSOCKET)
+        stompClient = Stomp.over(sockJs);
         stompClient.connect({},
             onConnected,
             onConnectingError
@@ -73,8 +83,10 @@ const Game = () => {
                 handleUserJoin(payloadData.playerAreas)
                 break;
             case "MOVE":
-                console.log('payloadData', payloadData)
-                handleDropWs(previousStateRef.current, payloadData.source, payloadData.destination, payloadData.draggableId);
+                handleDropWs(previousStateRef.current,
+                    payloadData.source,
+                    payloadData.destination,
+                    payloadData.draggableId);
                 break;
         }
     }
@@ -112,8 +124,8 @@ const Game = () => {
         if (currentUserIndex >= 0) {
             const positions = [];
             Object.keys(payload).forEach((it, index) => {
-                const position = (index + currentUserIndex) % 4 + 1;
-                positions.push(Object.keys(payload)[position - 1]);
+                const position = (index + currentUserIndex) % Object.keys(payload).length;
+                positions.push(Object.keys(payload)[position]);
             })
             setPlayersOrder(positions)
         }
@@ -133,7 +145,6 @@ const Game = () => {
         if (!emptyColumn) return;
 
         stompClient.send(WEBSOCKET_SEND_JOIN + params.gameUuid, {}, JSON.stringify({
-            // gameArea: emptyColumn.id,
             username: userState.username,
             type: 'USER_JOIN'
         }));
@@ -293,8 +304,6 @@ const Game = () => {
         return cardsForAllAreas;
     }
 
-    console.log("STEJCIK ");
-    console.log({state});
     return userState.username ? (
         <div className={'game-container'}>
             <VoiceChat/>

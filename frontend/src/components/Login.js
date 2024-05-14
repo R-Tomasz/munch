@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {Button, Form} from "react-bootstrap";
-import {authenticateUser} from "../services/auth/AuthAction";
+import {authenticateUser, logoutUser} from "../services/auth/AuthAction";
 import {useDispatch} from "react-redux";
 
 const Login = () => {
@@ -25,8 +25,13 @@ const Login = () => {
         const {name, value} = e.target;
         setUserForm({...userForm, [name]: value});
     }
+
+    const logout = () => {
+        dispatch(logoutUser());
+    };
+
     return (
-        <Form>
+        <Form className={'form-outline mb-4'}>
             <Form.Group className="mb-3" controlId="formBasicUsername">
                 <Form.Label>Username</Form.Label>
                 <Form.Control type="text"
@@ -35,7 +40,6 @@ const Login = () => {
                               value={userForm.username}
                               onChange={credentialChange}/>
             </Form.Group>
-            <p>aaa </p>
             <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Username</Form.Label>
                 <Form.Control type="password"
@@ -44,7 +48,9 @@ const Login = () => {
                               value={userForm.password}
                               onChange={credentialChange}/>
             </Form.Group>
-            <Button onClick={validateUser}>Zaloguj</Button>
+            <Button className={'btn btn-primary btn-block mb-4'} onClick={validateUser}>Zaloguj</Button>
+            <Button className={'btn btn-primary btn-block mb-4 mx-2'} onClick={logout}>Wyloguj</Button>
+
         </Form>
     );
 };

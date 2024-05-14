@@ -1,5 +1,4 @@
 import {Droppable} from "react-beautiful-dnd";
-// import React from 'react';
 import GameCard from "./GameCard";
 import "../styles/TableArea.css"
 
@@ -31,7 +30,7 @@ const TableArea = ({areas, cards}) => {
                                               index={index}
                                               card={item}
                                               stackable={area.stack}
-                                              revealed={area.hidden}/> //todo co to
+                                              revealed={!area.hidden}/>
                                 ))}
                                 {provided.placeholder}
                             </div>

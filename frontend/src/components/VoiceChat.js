@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import AgoraRTC from 'agora-rtc-sdk-ng';
 import {APP_ID, CHANNEL_NAME, TEMP_TOKEN} from '../api/voiceConstants'
 import {Button} from "reactstrap";
-import '../styles/Voice.css'
+import '../styles/VoiceChat.css'
 
 
 const VoiceChat = () => {

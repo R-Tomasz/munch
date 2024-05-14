@@ -63,7 +63,6 @@ export const checkJwtToken = () => async (dispatch) => {
         return Promise.resolve(res.data);
     }).catch((err) => {
         dispatch(failure());
-        // return Promise.reject(err);
     });
 }
 

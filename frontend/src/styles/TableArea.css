@@ -1,5 +1,4 @@
 .table-area-container {
-    /*height: 750px;*/
     grid-area: 3 / 3 / 11 / 9;
 }
 
@@ -13,32 +12,28 @@
 }
 
 .stack-doors {
-    grid-area: 1 / 2 / 1 / 2;
-}
-
-.stack-treasures {
-    grid-area: 2 / 2 / 2 / 2;
-}
-
-.stack-discarded-doors {
     grid-area: 1 / 1 / 1 / 1;
 }
 
-.stack-discarded-treasures {
+.stack-treasures {
     grid-area: 2 / 1 / 2 / 1;
+}
+
+.stack-discarded-doors {
+    grid-area: 1 / 2 / 1 / 2;
+}
+
+.stack-discarded-treasures {
+    grid-area: 2 / 2 / 2 / 2;
 }
 
 .playing-area {
     grid-area: 1 / 3 / 3 / 6;
 }
 
-
-/*.game-container {*/
-/*    display: grid;*/
-/*    grid-template-columns: repeat(10, 1fr);*/
-/*    grid-gap: 5px;*/
-/*    background-color: #2196F3;*/
-/*    padding: 5px;*/
-/*    height: 100vh;*/
-/*    grid-auto-rows: minmax(100px, auto);*/
-/*}*/
+.stack-doors,
+.stack-treasures,
+.stack-discarded-doors,
+.stack-discarded-treasures {
+    display: block !important;
+}
